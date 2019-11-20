@@ -26,8 +26,12 @@ node('master') {
             //sh 'chmod -R 777 /var/lib/jenkins/workspace/SFDX-App-Build_@tmp/secretFiles' 
             list = sh returnStdout: true, script: "${toolbelt}/sfdx force:org:list --json"
             println(list)
+            
+            //To set default dev hub username 
+             rm = sh returnStatus: true, script: "${toolbelt}/sfdx force:config:set defaultdevhubusername=${HUB_ORG} --global"
             // need to pull out assigned username
-            rmsg = sh returnStdout: true, script: "${toolbelt}/sfdx force:org:create --definitionfile config/project-scratch-def.json --json --setdefaultusername"
+            rmsg = sh returnStdout: true, script: "${toolbelt}/sfdx force:org:create --definitionfile config/project-scratch-def.json --json --targetdevhubusername ${HUB_ORG} --setalias my-scratch-org"
+
             printf rmsg
             def jsonSlurper = new JsonSlurperClassic()
             def robj = jsonSlurper.parseText(rmsg)
