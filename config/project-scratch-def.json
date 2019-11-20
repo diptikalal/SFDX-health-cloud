@@ -1,12 +1,12 @@
 {
   "country": "IN",
+  "orgName": "Extentia Information Technology",
   "edition": "Developer",
-  "features": ["ContactsToMultipleAccounts", "HealthCloudUser","communities"],
-  "settings": {
-  "orgPreferenceSettings": {
-   "s1DesktopEnabled": true
-  }
- },
-  "orgName": "Extentia",
-  "adminEmail": "kalal.dipti@gmail.com"
+   "features": ["ContactsToMultipleAccounts", "HealthCloudUser","communities"],
+   "settings": {
+        "lightningExperienceSettings": {
+            "enableS1DesktopEnabled": true
+        }
+    },
+  "adminEmail": "dipti.kalal@extentia.com"
 }
