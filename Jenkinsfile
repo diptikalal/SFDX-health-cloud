@@ -36,7 +36,10 @@ node('master') {
             robj = null
 
         }
-
+        stage('install helath cloud package')
+        {
+            rc = sh returnStatus: true, script: "${toolbelt}/sfdx force:package:install --package=04t1C000000Apj5 --targetusername ${SFDC_USERNAME}"
+        }
         stage('Push To Test Org') {
             rc = sh returnStatus: true, script: "${toolbelt}/sfdx force:source:push --targetusername ${SFDC_USERNAME}"
             if (rc != 0) {
