@@ -49,6 +49,8 @@ node('master') {
             if (rc != 0) {
                 error 'push failed'
             }
+            //open scratch org 
+            rp = sh returnStatus: true, script: "${toolbelt}/sfdx force:org:open --targetusername ${SFDC_USERNAME}"
             // assign permset
             rc = sh returnStatus: true, script: "${toolbelt}/sfdx force:user:permset:assign --targetusername ${SFDC_USERNAME} --permsetname DreamHouse"
             if (rc != 0) {
